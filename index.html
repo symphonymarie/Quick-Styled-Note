@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Paper</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            text-indent: 0;
+        }
+
+        .div-txt {
+            background-image: url("Paper1.png");
+            /* set by JS */
+            width: 560px;
+            height: 762px;
+            filter: drop-shadow(5px 5px 12px #0000008a);
+        }
+
+        body {
+            background-image: url("table1.png");
+            /* set by JS */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-blend-mode: overlay;
+            background-color: rgb(49, 32, 21);
+        }
+
+        .overlay {
+            z-index: 3;
+            position: absolute;
+            left: 30px;
+            top: 0px;
+            width: 80%;
+            height: 100%;
+            mix-blend-mode: color-burn;
+            overflow: hidden;
+        }
+
+        .Text {
+            font-size: 1.75rem;
+            font-family: "HamletOrNot";
+            color: rgba(30, 29, 26, 0.8);
+            line-height: 1.2;
+            text-align: left;
+            text-indent: 39.154px;
+            -moz-transform: matrix(0.59322408566097, 0.01039360343159, 0.00015608780181, 0.5945732280681, 0, 0);
+            -webkit-transform: matrix(0.59322408566097, 0.01039360343159, 0.00015608780181, 0.5945732280681, 0, 0);
+            -ms-transform: matrix(0.59322408566097, 0.01039360343159, 0.00015608780181, 0.5945732280681, 0, 0);
+            position: relative;
+            left: -83.528px;
+            top: -115px;
+            width: 728.869px;
+            height: 1034.561px;
+            z-index: 2;
+        }
+
+        #picker {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 9999;
+            width: 210px;
+            background: rgba(20, 14, 10, .72);
+            color: #ffffff;
+            font: 13px/1.6 system-ui, sans-serif;
+            padding: 10px 14px;
+            border-radius: 2px;
+            box-shadow: 0 4px 14px #0006;
+        }
+
+        #picker .group {
+            margin: 8px 0;
+        }
+
+        #picker .group>label {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        #picker select {
+            width: 100%;
+            font: inherit;
+        }
+
+        #picker input[type="file"] {
+            display: block;
+            width: 100%;
+            margin-top: 4px;
+            font-size: 11px;
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="picker">
+        <div class="group">
+            <label for="tableSelect">Background:</label>
+            <select id="tableSelect"></select>
+            <input type="file" id="tableFile" accept="image/*"
+                title="Pick a local background image (overrides the dropdown)" />
+        </div>
+        <div class="group">
+            <label for="paperSelect">Paper:</label>
+            <select id="paperSelect"></select>
+            <input type="file" id="paperFile" accept="image/*"
+                title="Pick a local paper image (overrides the dropdown)" />
+        </div>
+    </div>
+
+    <div style="padding:5em;margin-left: 1em;">
+        <div class="div-txt">
+            <img src="Scroll_FG1.png" class="overlay" id="scrollFG">
+            <p class="Text">Tell Ea-nasir: Nanni sends the
+                following message:
+
+                When you came, you said to me as follows: ‘I will give Gimil-Sin (when he comes) fine quality copper
+                ingots.’ You left then but you did not do what you promised me. You put ingots which were not good
+                before my
+                messenger (Sit-Sin) and said: ‘If you want to take them, take them; if you do not want to take them, go
+                away!’
+
+                What do you take me for, that you treat somebody like me with such contempt? I have sent as messengers
+                gentlemen like ourselves to collect the bag with my money (deposited with you) but you have treated me
+                with
+                contempt by sending them back to me empty-handed several times, and that through enemy territory. Is
+                there
+                anyone among the merchants who trade with Telmun who has treated me in this way? You alone treat my
+                messenger with contempt! On account of that one (trifling) mina of silver which I owe you, you feel free
+                to
+                speak in such a way, while I have given to the palace on your behalf 1,080 pounds of copper, and
+                umi-abum
+                has likewise given 1,080 pounds of copper, apart from what we both have had written on a sealed tablet
+                to be
+                kept in the temple of Samas.
+
+                How have you treated me for that copper? You have withheld my money bag from me in enemy territory; it
+                is
+                now up to you to restore (my money) to me in full.
+
+                Take cognizance that (from now on) I will not accept here any copper from you that is not of fine
+                quality. I
+                shall (from now on) select and take the ingots individually in my own yard, and I shall exercise against
+                you
+                my right of rejection because you have treated me with contempt.
+
+            </p>
+        </div>
+    </div>
+
+    <script>
+
+        // bg images
+        var tableFiles = [
+            "table1.png", "table2.png", "table3.png", "table4.png", "table5.png",
+            "table6.png", "table7.png", "table8.png", "table9.png", "table10.png"
+        ];
+        // paper images
+        var paperFiles = [
+            { table: "Paper1.png", fg: "Scroll_FG.png" },
+            { table: "Paper2.png", fg: "Scroll_FG.png" },
+            { table: "Paper3.png", fg: "Scroll_FG.png" },
+            { table: "Paper4.png", fg: "Paper4-FG.png" }
+        ];
+
+        var tableSelect = document.getElementById("tableSelect");
+        var paperSelect = document.getElementById("paperSelect");
+        var tableFile = document.getElementById("tableFile");
+        var paperFile = document.getElementById("paperFile");
+        var scrollFG = document.getElementById("scrollFG");
+        var paperEl = document.querySelector(".div-txt");
+        var tableLocalUrl = null;
+        var paperLocalUrl = null;
+
+        function releaseUrl(url) {
+            if (url && window.URL && URL.revokeObjectURL) {
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        function applyBackground(index) {
+            index = Math.max(0, Math.min(tableFiles.length - 1, index));
+            var old = tableLocalUrl;
+            tableLocalUrl = null;
+            document.body.style.backgroundImage = 'url("' + tableFiles[index] + '")';
+            tableSelect.value = index;
+            releaseUrl(old);
+        }
+
+        function applyPaper(index) {
+            index = Math.max(0, Math.min(paperFiles.length - 1, index));
+            var old = paperLocalUrl;
+            paperLocalUrl = null;
+            paperEl.style.backgroundImage = 'url("' + paperFiles[index].table + '")';
+            scrollFG.src = paperFiles[index].fg;
+            paperSelect.value = index;
+            releaseUrl(old);
+        }
+
+        function applyLocalBackground(file) {
+            if (!file) return;
+            var old = tableLocalUrl;
+            tableLocalUrl = URL.createObjectURL(file);
+            document.body.style.backgroundImage = 'url("' + tableLocalUrl + '")';
+            tableSelect.value = "";    
+            releaseUrl(old);
+        }
+
+        function applyLocalPaper(file) {
+            if (!file) return;
+            var old = paperLocalUrl;
+            paperLocalUrl = URL.createObjectURL(file);
+            paperEl.style.backgroundImage = 'url("' + paperLocalUrl + '")';
+            paperSelect.value = ""; 
+            releaseUrl(old);
+        }
+
+        tableFiles.forEach(function (file, i) {
+            var opt = document.createElement("option");
+            opt.value = i;
+            opt.textContent = i + 1;
+            opt.title = file;
+            tableSelect.appendChild(opt);
+        });
+
+        paperFiles.forEach(function (p, i) {
+            var opt = document.createElement("option");
+            opt.value = i;
+            opt.textContent = i + 1;
+            opt.title = p.table;
+            paperSelect.appendChild(opt);
+        });
+
+        tableSelect.addEventListener("change", function () {
+            applyBackground(parseInt(this.value, 10));
+        });
+
+        paperSelect.addEventListener("change", function () {
+            applyPaper(parseInt(this.value, 10));
+        });
+
+        tableFile.addEventListener("change", function () {
+            applyLocalBackground(this.files && this.files[0]);
+        });
+
+        paperFile.addEventListener("change", function () {
+            applyLocalPaper(this.files && this.files[0]);
+        });
+
+        applyBackground(0);
+        applyPaper(0);
+    </script>
+</body>
+
+</html>
