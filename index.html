@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html
+<!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Paper</title>
+    <title>Quick Styled Note</title>
     <style type="text/css">
         * {
             margin: 0;
@@ -14,7 +14,6 @@
 
         .div-txt {
             background-image: url("Paper1.png");
-            /* set by JS */
             width: 560px;
             height: 762px;
             filter: drop-shadow(5px 5px 12px #0000008a);
@@ -22,7 +21,6 @@
 
         body {
             background-image: url("table1.png");
-            /* set by JS */
             background-repeat: no-repeat;
             background-size: cover;
             background-blend-mode: overlay;
@@ -38,6 +36,7 @@
             height: 100%;
             mix-blend-mode: color-burn;
             overflow: hidden;
+            pointer-events: none;
         }
 
         .Text {
@@ -56,6 +55,7 @@
             width: 728.869px;
             height: 1034.561px;
             z-index: 2;
+            contentEditable: true;
         }
 
         #picker {
@@ -115,7 +115,7 @@
     <div style="padding:5em;margin-left: 1em;">
         <div class="div-txt">
             <img src="Scroll_FG1.png" class="overlay" id="scrollFG">
-            <p class="Text">Tell Ea-nasir: Nanni sends the
+            <p class="Text" contentEditable="true">Tell Ea-nasir: Nanni sends the
                 following message:
 
                 When you came, you said to me as follows: ‘I will give Gimil-Sin (when he comes) fine quality copper
